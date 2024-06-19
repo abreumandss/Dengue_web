@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        #cabecalho {
+            background-color: #225D4D;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #botao-analise {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #resultados {
+            text-align: center;
+            color: #000000;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #formulario {
+            background-color: #F1F1F1;
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #formulario-dois {
+            background-color: #F1F1F1;
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #paciente {
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cabecalho">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='cabecalho.jpg') }}" alt="Dengue" style="width: 350px;">
+        </a>
+        <a href="{{ url_for('analise') }}" id="botao-analise">Análise Quantitativa dos Casos</a>
+    </div>
+
+    <div id="formulario-dois">
+        <h2 id="paciente">Estatísticas</h2>
+        <p>Total de pacientes diagnosticados com dengue: {{ total_dengue }}</p>
+        {% for regiao, count in regiao_dict.items() %}
+        <p>Região: {{ regiao }}, Casos de dengue: {{ count }}</p>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>
